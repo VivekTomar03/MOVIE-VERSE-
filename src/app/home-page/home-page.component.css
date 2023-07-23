@@ -1,0 +1,107 @@
+/* home.component.css */
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styles for the carousel */
+.slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-container {
+  display: flex;
+  animation: slideAnimation 15s infinite;
+}
+
+.slide {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.slide img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes slideAnimation {
+  0%, 20% {
+    transform: translateX(0);
+  }
+  25%, 45% {
+    transform: translateX(-100%);
+  }
+  50%, 70% {
+    transform: translateX(-200%);
+  }
+  75%, 95% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Styles for the recommended movies section */
+.recommended-movies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Styles for individual movie cards */
+.movie-card {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s ease; /* Add a smooth transition on hover */
+}
+
+/* Add a subtle shadow on hover */
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+.movie-card img {
+  width: 90%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.movie-details {
+  padding: 10px;
+}
+
+.movie-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-genre {
+  margin: 0;
+  color: #666;
+}
+
+
+.best-movies {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+ 
+}
+
+/* Adjust individual movie cards for Best Movies */
+.best-movies .movie-card {
+  width: calc(35% - 50px); /* 20% width for each movie card with 20px margin */
+  margin-bottom: 20px;
+}

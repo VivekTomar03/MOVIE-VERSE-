@@ -1,0 +1,140 @@
+/* styles.css */
+.container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, #2932d4, #FF1493);
+}
+
+h3 {
+  color: #fbfbfd;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #f5f6fc;
+}
+
+input[type="text"],
+textarea,
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: -10px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 10px;
+}
+
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+.submit-button {
+  background-color: #FF1493;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+/* Modal Styles */
+.modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(25, 24, 24, 0.5);
+  justify-content: center;
+  align-items: center;
+  color: #fff; /* Set text color to white */
+}
+
+.modal-content {
+  background-color: #2932d4;
+  color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Add a text shadow for better visibility */
+}
+
+.pay-button {
+  background-color: #FF1493;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-shadow: none; /* Remove text shadow for button elements */
+}
+
+.cancel-button {
+  background-color: #7306f7;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  text-shadow: none; /* Remove text shadow for button elements */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
+
+  input[type="text"],
+  textarea,
+  input[type="date"],
+  select {
+    font-size: 14px;
+  }
+
+  .submit-button,
+  .pay-button,
+  .cancel-button {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+  }
+
+  input[type="text"],
+  textarea,
+  input[type="date"],
+  select {
+    font-size: 12px;
+  }
+
+  .submit-button,
+  .pay-button,
+  .cancel-button {
+    font-size: 12px;
+  }
+}

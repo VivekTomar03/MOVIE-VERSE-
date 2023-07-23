@@ -1,0 +1,132 @@
+<h2 style="text-align: center;">User Management</h2>
+
+<!-- Button to add a new user -->
+<button class="add-button" (click)="addUser()">Add User</button>
+
+<!-- Table to display user data -->
+<table class="user-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Membership Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{ user.id }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.membership_type }}</td>
+      <td>
+        <button class="action-button" (click)="viewUserDetails(user)">View Details</button>
+        <button class="action-button" (click)="editUser(user)">Edit</button>
+        <button class="action-button" (click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- User Details Modal -->
+<div *ngIf="selectedUser" class="modal">
+  <div class="modal-content">
+    <h3>User Details</h3>
+    <div class="user-details">
+      <p><strong>Name:</strong> {{ selectedUser.username }}</p>
+      <p><strong>Bio:</strong> {{ selectedUser.bio }}</p>
+      <p><strong>Date of Birth:</strong> {{ selectedUser.date_of_birth }}</p>
+      <p><strong>Gender:</strong> {{ selectedUser.gender }}</p>
+      <p><strong>Membership Type:</strong> {{ selectedUser.membership_type }}</p>
+      <p><strong>User Status:</strong> {{ selectedUser.user_status ? 'Active' : 'Inactive' }}</p>
+    </div>
+    <button class="close-button" (click)="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- Add User Modal -->
+<div *ngIf="showAddUserModal" class="modal">
+  <div class="modal-content">
+    <h3>Add User</h3>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="newUser.username" name="username" required>
+    </div>
+    <div class="form-group">
+      <label for="bio">Bio:</label>
+      <textarea id="bio" [(ngModel)]="newUser.bio" name="bio"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="dateOfBirth">Date of Birth:</label>
+      <input type="date" id="dateOfBirth" [(ngModel)]="newUser.date_of_birth" name="dateOfBirth" required>
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <div class="radio-group">
+        <label>
+          <input type="radio" name="gender" value="Male" [(ngModel)]="newUser.gender"> Male
+        </label>
+        <label>
+          <input type="radio" name="gender" value="Female" [(ngModel)]="newUser.gender"> Female
+        </label>
+        <label>
+          <input type="radio" name="gender" value="Other" [(ngModel)]="newUser.gender"> Other
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="membershipType">Membership Type:</label>
+      <select id="membershipType" [(ngModel)]="newUser.membership_type" name="membershipType" required>
+        <option value="Regular">Regular</option>
+        <option value="Premium">Premium</option>
+        <option value="VIP">VIP</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="text" id="username" [(ngModel)]="newUser.password" name="password" required>
+    </div>
+    <div class="form-group">
+      <label for="userStatus">User Status:</label>
+      <input type="checkbox" id="userStatus" [(ngModel)]="newUser.user_status" name="userStatus">
+    </div>
+    <button class="submit-button" (click)="submitUser()">Submit</button>
+    <button class="cancel-button" (click)="closeAddUserModal()">Cancel</button>
+  </div>
+</div>
+
+<!-- Edit User Modal -->
+<div *ngIf="showEditUserModal" class="modal">
+  <div class="modal-content">
+    <h3>Edit User</h3>
+    <div class="form-group">
+      <label for="editUsername">Username:</label>
+      <input type="text" id="editUsername" [(ngModel)]="editUserObj.username" name="editUsername" required>
+    </div>
+    <div class="form-group">
+      <label for="editBio">Bio:</label>
+      <textarea id="editBio" [(ngModel)]="editUserObj.bio" name="editBio"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="editDateOfBirth">Date of Birth:</label>
+      <input type="date" id="editDateOfBirth" [(ngModel)]="editUserObj.date_of_birth" name="editDateOfBirth" required>
+    </div>
+    <div class="form-group">
+      <label for="editGender">Gender:</label>
+      <select id="editGender" [(ngModel)]="editUserObj.gender" name="editGender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="editMembershipType">Membership Type:</label>
+      <input type="text" id="editMembershipType" [(ngModel)]="editUserObj.membership_type" name="editMembershipType" required>
+    </div>
+    <div class="form-group">
+      <label for="editUserStatus">User Status:</label>
+      <input type="checkbox" id="editUserStatus" [(ngModel)]="editUserObj.user_status" name="editUserStatus">
+    </div>
+    <button class="submit-button" (click)="updateUser()">Update</button>
+    <button class="cancel-button" (click)="closeEditUserModal()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container">
+  <h3>Movies</h3>
+  <div *ngIf="!dataLoaded" class="loader">
+    <div class="shapes-6"></div>
+  </div>
+  <div *ngIf="dataLoaded" class="movie-list">
+    <div *ngFor="let movie of movies" class="movie-item" (click)="onSelectMovie(movie)">
+      <img [src]="movie.poster" alt="{{ movie.title }}">
+      <h4>{{ movie.title }}</h4>
+      <p>Language :{{ movie.language }}</p>
+      <p>Date :{{ movie.date }}</p>
+      <h4 class="subtitle">Shows:`12-15  ,  15-18   , 18-21</h4>
+
+      <button (click)="bookMovie()">Book Now</button>
+     
+    </div>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+<div *ngIf="selectedMovie" class="modal" id="payment-modal">
+  <div class="modal-content">
+    <h3>{{ selectedMovie.title }}</h3>
+    <p>{{ selectedMovie.description }}</p>
+    <p>Date :{{ selectedMovie.date }}</p>
+    <p>Date :{{ selectedMovie.time }}</p>
+
+    <!-- Add more movie details here -->
+    <div class="form-group">
+      <label for="cardNumber">Card Number:</label>
+      <input type="text" id="cardNumber" [(ngModel)]="paymentDetails.cardNumber" name="cardNumber" required>
+    </div>
+    <div class="form-group">
+      <label for="expiryDate">Expiry Date:</label>
+      <input type="text" id="expiryDate" [(ngModel)]="paymentDetails.expiryDate" name="expiryDate" required>
+    </div>
+    <div class="form-group">
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" [(ngModel)]="paymentDetails.cvv" name="cvv" required>
+    </div>
+    <button [disabled]="!(paymentDetails.cardNumber && paymentDetails.cvv)" (click)="viewSeats()">View Seats</button>
+    <!-- <button class="pay-button" (click)="pay()">Pay Now</button> -->
+    <button class="cancel-button" (click)="closeModal()">Cancel</button>
+  </div>
+</div>
+
+<div *ngIf="selectedMovie" class="modal" id="seats-modal">
+  <div class="modal-content">
+    <h3>{{ selectedMovie.title }}</h3>
+    <p>{{ selectedMovie.description }}</p>
+    <h4>Select Seats</h4> 
+    <div class="seats-layout">
+      <div *ngFor="let row of seatLayout.rows" class="seat-row">
+        <div *ngFor="let column of seatLayout.columns" class="seat">
+          <!-- Check if the seat is available, booked, or selected -->
+          <div *ngIf="seatLayout.availableSeats.includes(row + column)"
+               class="seat-item available-seat"
+               (click)="toggleSeatSelection(row + column)">
+          </div>
+          <div *ngIf="seatLayout.bookedSeats.includes(row + column)"
+               class="seat-item booked-seat">
+          </div>
+          <div *ngIf="seatLayout.selectedSeats.includes(row + column)"
+               class="seat-item selected-seat"
+               (click)="toggleSeatSelection(row + column)">
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="book-button" (click)="performBooking()">Book Now</button>
+    <button class="cancel-button" (click)="closeSeatsModal()">Cancel</button>
+  </div>
+</div>
+

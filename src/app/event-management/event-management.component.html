@@ -1,0 +1,104 @@
+<div class="container">
+    <h2>Event Management</h2>
+    <!-- Add Event Button -->
+    <button class="add-button" (click)="addEvent()">Add Event</button>
+  
+    <!-- Event Table -->
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Date</th>
+      
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{ event.id }}</td>
+          <td>{{ event.title }}</td>
+          <td>{{ event.date }}</td>
+          
+          <td>
+            <button class="view-button" (click)="viewEvent(event)">View</button>
+            <button class="edit-button" (click)="editEvent(event)">Edit</button>
+            <button class="delete-button" (click)="deleteEvent(event.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+<!-- View Event Modal -->
+<div class="modal view-modal" [ngClass]="{'open': isViewModalOpen}">
+  <div class="view-modal-content">
+    <!-- Event details will be displayed here -->
+    <img width="150px" class="poster" [src]="selectedEvent?.poster" alt="Movie Poster">
+    <h3>{{ selectedEvent?.title }}</h3>
+    <p>Date: {{ selectedEvent?.date }}</p>
+    <p>Description: {{ selectedEvent?.description }}</p>
+    <p>Time : {{ selectedEvent?.time }}</p>
+    <!-- You can add more event details here -->
+    <button class="cancel-button" (click)="closeViewModal()">Close</button>
+  </div>
+</div>
+
+  
+
+  <!-- Edit Event Modal -->
+<div class="modal" [ngClass]="{'open': isEditModalOpen}">
+  <div class="modal-content">
+    <h3>Edit Event</h3>
+    <form (ngSubmit)="saveEditedEvent()">
+      <label for="title">Title:</label>
+      <input type="text" name="title" [(ngModel)]="editedEvent.title" required>
+
+      <label for="description">Description:</label>
+      <textarea name="description" [(ngModel)]="editedEvent.description" required></textarea>
+
+      <label for="date">Date:</label>
+      <input type="date" name="date" [(ngModel)]="editedEvent.date" required>
+
+      <label for="time">Time:</label>
+      <input type="time" name="time" [(ngModel)]="editedEvent.time" required>
+
+      <!-- Add more fields as needed -->
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Save Changes</button>
+        <button type="button" class="cancel-button" (click)="closeEditModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+ <!-- Add Event Modal -->
+ <div class="modal" [ngClass]="{'open': isAddModalOpen}">
+  <div class="modal-content">
+    <h3>Add Event</h3>
+    <form (ngSubmit)="submitAddEventForm()">
+      <label for="title">Poster:</label>
+        <input type="text" name="title" [(ngModel)]="newEvent.poster" required>
+      <label for="title">Title:</label>
+      <input type="text" name="title" [(ngModel)]="newEvent.title" required>
+
+      <label for="description">Description:</label>
+      <textarea name="description" [(ngModel)]="newEvent.description" required></textarea>
+
+      <label for="date">Date:</label>
+      <input type="date" name="date" [(ngModel)]="newEvent.date" required>
+
+      <label for="time">Time:</label>
+      <input type="time" name="time" [(ngModel)]="newEvent.time" required>
+
+      <!-- Add more fields as needed -->
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Add Event</button>
+        <button type="button" class="cancel-button" (click)="closeAddModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

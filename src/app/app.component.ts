@@ -6,5 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'movie-verse';
+ 
+
+  getAdminLinkText(): string {
+   
+    const isAdminLoggedIn = localStorage.getItem('admin');
+    return isAdminLoggedIn ? 'Admin Dashboard' : 'Admin Login';
+  }
+  logout() {
+    localStorage.removeItem('usertoken');
+  }
+  getlout(){
+    const isAdminLoggedIn = localStorage.getItem('usertoken');
+    return isAdminLoggedIn ? 'Logout' : 'Login';
+  }
+  logoutuser(){
+    localStorage.removeItem("usertoken")
+  }
+  username(){
+    const isAdminLoggedIn = localStorage.getItem('usertoken');
+    return isAdminLoggedIn ? isAdminLoggedIn : 'Signup';
+  }
 }

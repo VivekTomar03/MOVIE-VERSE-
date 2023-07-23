@@ -1,0 +1,77 @@
+<div class="container">
+    <h3>Sign Up</h3>
+    <form (submit)="submitUser()">
+       
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" [(ngModel)]="newUser.username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="bio">Bio:</label>
+          <textarea id="bio" [(ngModel)]="newUser.bio" name="bio"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth:</label>
+          <input type="date" id="dateOfBirth" [(ngModel)]="newUser.date_of_birth" name="dateOfBirth" required>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="gender" value="Male" [(ngModel)]="newUser.gender"> Male
+            </label>
+            <label>
+              <input type="radio" name="gender" value="Female" [(ngModel)]="newUser.gender"> Female
+            </label>
+            <label>
+              <input type="radio" name="gender" value="Other" [(ngModel)]="newUser.gender"> Other
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="text" id="username" [(ngModel)]="newUser.password" name="password" required>
+        </div>
+        <div class="form-group">
+          <label for="membershipType">Membership Type:</label>
+          <select id="membershipType" [(ngModel)]="newUser.membership_type" name="membershipType" required>
+            <option value="Regular">Regular</option>
+            <option value="Premium">Premium</option>
+            <option value="VIP">VIP</option>
+          </select>
+        </div>
+
+
+        <div *ngIf="showPaymentModal" class="modal">
+            <div class="modal-content">
+              <h3>Payment Details</h3>
+              <div class="form-group">
+                <label for="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" [(ngModel)]="paymentDetails.cardNumber" name="cardNumber" required>
+              </div>
+              <div class="form-group">
+                <label for="expiryDate">Expiry Date:</label>
+                <input type="text" id="expiryDate" [(ngModel)]="paymentDetails.expiryDate" name="expiryDate" required>
+              </div>
+              <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" [(ngModel)]="paymentDetails.cvv" name="cvv" required>
+              </div>
+              <button class="pay-button" (click)="pay()">Pay Now</button>
+              <button class="cancel-button" (click)="closePaymentModal()">Cancel</button>
+            </div>
+          </div>
+      
+        
+
+
+
+        <div class="form-group">
+          <label for="userStatus">User Status:</label>
+          <input type="checkbox" id="userStatus" [(ngModel)]="newUser.user_status" name="userStatus">
+        </div>
+        <button class="submit-button" >Submit</button>
+    </form>
+  </div>
+  
+  

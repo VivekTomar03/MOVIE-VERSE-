@@ -1,0 +1,101 @@
+<div class="container">
+    <h2>Movie Management</h2>
+    <button class="add-button" (click)="addMovie()">Add Movie</button>
+    <table class="movie-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Language</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movies">
+          <td>{{ movie.id }}</td>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.language }}</td>
+          <td>
+            <button class="action-button" (click)="viewUserDetails(movie)">View Details</button>
+            <button class="edit-button" (click)="editMovie(movie)">Edit</button>
+            <button class="delete-button" (click)="deleteMovie(movie.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Add Movie Modal -->
+<div class="modal" [ngClass]="{'open': isModalOpen}">
+    <div class="modal-content">
+      <h3>Add Movie</h3>
+      <form (ngSubmit)="submitMovieForm()">
+        <label for="title">Title:</label>
+        <input type="text" name="title" [(ngModel)]="newMovie.title" required>
+  
+        <label for="description">Description:</label>
+        <textarea name="description" [(ngModel)]="newMovie.description" required></textarea>
+  
+        <label for="language">Language:</label>
+        <input type="text" name="language" [(ngModel)]="newMovie.language" required>
+  
+        <label for="poster">Poster URL:</label>
+        <input type="text" name="poster" [(ngModel)]="newMovie.poster" required>
+  
+        <div class="button-container">
+          <button type="submit" class="submit-button">Add Movie</button>
+          <button type="button" class="cancel-button" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+ <!-- ... previous code ... -->
+
+<!-- View Details Modal -->
+<div class="modal" [ngClass]="{'open': isModalOpen1 && selectedMovie1}">
+  <div class="modal-content">
+    <h3>View Details</h3>
+    <!-- Display movie details if a movie is selected -->
+    <div *ngIf="selectedMovie1">
+      <div class="movie-card">
+        <img class="poster" [src]="selectedMovie1?.poster" alt="Movie Poster">
+        <h4 class="title">{{ selectedMovie1.title }}</h4>
+        <p class="description">{{ selectedMovie1.description }}</p>
+        <p class="language">Language: {{ selectedMovie1.language }}</p>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button type="button" class="cancel-button" (click)="closeModal1()">Close</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Edit Movie Modal -->
+<div class="modal" [ngClass]="{'open': isEditModalOpen}">
+  <div class="modal-content">
+    <h3>Edit Movie</h3>
+    <form (ngSubmit)="submitEditMovieForm()">
+      <label for="title">Title:</label>
+      <input type="text" name="title" [(ngModel)]="editedMovie.title" required>
+
+      <label for="description">Description:</label>
+      <textarea name="description" [(ngModel)]="editedMovie.description" required></textarea>
+
+      <label for="language">Language:</label>
+      <input type="text" name="language" [(ngModel)]="editedMovie.language" required>
+
+      <label for="poster">Poster URL:</label>
+      <input type="text" name="poster" [(ngModel)]="editedMovie.poster" required>
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Save Changes</button>
+        <button type="button" class="cancel-button" (click)="closeEditModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

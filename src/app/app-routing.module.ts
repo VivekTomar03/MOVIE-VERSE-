@@ -1,9 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Add this line
-import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -17,34 +13,27 @@ import { LoginComponent } from './login/login.component';
 import { MovieComponent } from './movie/movie.component';
 import { EventComponent } from './event/event.component';
 
+const routes: Routes = [
+  { path: '', component: HomePageComponent },
+  { path: 'admin-login', component: AdminLoginComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent},
+  { path: 'user-management', component: UserManagementComponent },
+  { path: 'movie-management', component: MovieManagementComponent },
+  { path: 'show-management', component: ShowManagementComponent },
+  { path: 'event-management', component:EventManagementComponent },
+  { path: 'participant-management', component:ParticipantManagementComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'movie', component: MovieComponent },
+  { path: 'event', component: EventComponent },
+
+
+
+
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomePageComponent,
-    AdminLoginComponent,
-    AdminDashboardComponent,
-    UserManagementComponent,
-    MovieManagementComponent,
-    ShowManagementComponent,
-    EventManagementComponent,
-    ParticipantManagementComponent,
-    SignUpComponent,
-    LoginComponent,
-    MovieComponent,
-    EventComponent,
-    
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule, // Add this line
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppModule { 
-
- 
-}
+export class AppRoutingModule { }

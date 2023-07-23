@@ -1,0 +1,43 @@
+<div class="admin-dashboard">
+    <h2>Welcome to Admin Dashboard</h2>
+  
+    <div class="card-container">
+      <!-- User Management Card -->
+      <div class="card1" (click)="navigateToUserManagement()">
+        <h3>User Management</h3>
+        <p>Manage users and their permissions.</p>
+        <!-- Add any relevant actions or links here -->
+      </div>
+  
+      <!-- Movie Management Card -->
+      <div class="card2" (click)="navigateToMovieManagement()">
+        <h3>Movie Management</h3>
+        <p>Manage movies and their details.</p>
+        <!-- Add any relevant actions or links here -->
+      </div>
+  
+      <!-- Show Management Card -->
+      <div class="card3" (click)="navigateToShowManagement()">
+        <h3>Show Management</h3>
+        <p>Manage shows and their schedules.</p>
+        <!-- Add any relevant actions or links here -->
+      </div>
+  
+      <!-- Event Management Card -->
+      <div class="card4" (click)="navigateToEventManagement()">
+        <h3>Event Management</h3>
+        <p>Manage events and their information.</p>
+        <!-- Add any relevant actions or links here -->
+      </div>
+  
+      <!-- Participant Management Card -->
+      <div class="card5" (click)="navigateToParicipantManagement()" >
+        <h3>Participant Management</h3>
+        <p>Manage participants and their registrations.</p>
+        <!-- Add any relevant actions or links here -->
+      </div>
+    </div>
+  
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </div>
+  

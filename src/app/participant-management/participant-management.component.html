@@ -1,0 +1,86 @@
+<!-- participant-management.component.html -->
+<div class="container">
+    <h2>Participant Management</h2>
+    <table class="participant-table">
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Date</th>
+        
+            <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let participant of participants">
+            <td>{{participant.id }}</td>
+            <td>{{participant.title }}</td>
+            <td>{{participant.date }}</td>
+          <td>
+            <button class="show-participant-button" (click)="showParticipant(participant)">Show</button>
+            <button class="add-participant-button" (click)="addParticipant(participant)">Add</button>
+            <button class="delete-participant-button" (click)="deleteParticipant(participant.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="modal" [ngClass]="{'open': isShowModalOpen}">
+    <div class="modal-content">
+      <h3>Participant Details</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let participant of selectedParticipant">
+            <td>{{ participant?.email }}</td>
+            <td>{{ participant?.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="close-button" (click)="closeShowModal()">Close</button>
+    </div>
+  </div>
+
+
+  <!-- participant-management.component.html -->
+
+
+
+<div class="modal" [ngClass]="{'open': isShowModalOpen1}">
+  <div class="modal-content">
+    <h3>Add Participant</h3>
+   
+    <form>
+      <label>Email:</label>
+      <input type="text" [(ngModel)]="selectedParticipant1.email" name="email">
+
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="selectedParticipant1.name" name="name">
+
+      
+      <button class="save-button" (click)="saveParticipant()">Save</button>
+      <button class="cancel-button" (click)="isShowModalOpen1= false">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<!-- Other code remains the same -->
+
+<!-- Delete Participant Modal -->
+<div class="modal" [ngClass]="{'open': isDeleteModalOpen}">
+  <div class="modal-content">
+    <h3>Delete Participant</h3>
+    <form (submit)="deleteParticipant1()">
+      <label for="deleteEmail">Email:</label>
+      <input type="email" name="deleteEmail" [(ngModel)]="deleteEmail" required>
+      <button type="submit" class="delete-button">Delete</button>
+      <button type="button" class="cancel-button" (click)="closeDeleteModal()">Cancel</button>
+    </form>
+  </div>
+</div>

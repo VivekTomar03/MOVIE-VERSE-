@@ -1,0 +1,46 @@
+<div class="container">
+    <h2>Show Management</h2>
+    <table class="movie-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Language</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies">
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.language }}</td>
+                <td>
+                    <button class="add-button" (click)="addShow(movie)">Add Show</button>
+
+                    <button class="action-button" (click)="viewShow(movie)">View Show</button>
+                    <button class="action-button" (click)="editShow(movie)">Edit Show</button>
+                    <button class="action-button" (click)="deleteShow(movie.id)">Delete Show</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- View Show Modal -->
+<div class="modal" [ngClass]="{'open': isViewModalOpen}">
+    <div class="modal-content">
+        <h3>View Show</h3>
+        <div class="movie-card">
+            <img class="poster" [src]="selectedMovie?.poster" alt="Movie Poster">
+            <h4 class="title">{{ selectedMovie?.title }}</h4>
+            <p class="description">{{ selectedMovie?.description }}</p>
+            <p class="language">{{ selectedMovie?.language }}</p>
+            <h4 class="subtitle">Shows:`12-15  ,  15-18   , 18-21</h4>
+            <ul>
+                <li *ngFor="let show of selectedMovie?.shows">{{ show }}</li>
+            </ul>
+            <button class="cancel-button" (click)="closeViewModal()">Close</button>
+        </div>
+    </div>
+</div>
+
