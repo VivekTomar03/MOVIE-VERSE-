@@ -2,6 +2,9 @@
     <div class="chat-header">
       <h2>Chat Bot</h2>
     </div>
+    <div class="chat-actions">
+        <button class="top" (click)="openModal()">Top Recommended Movies</button>
+      </div>
     <div class="chat-messages">
       <div *ngFor="let message of chatMessages" [ngClass]="{'user-message': !message.isBotResponse, 'bot-message': message.isBotResponse}">
         <h3>{{ message.text }}</h3>
@@ -13,3 +16,14 @@
     </div>
   </div>
   
+  <div class="modal" [ngClass]="{'active': showModal}">
+    <div class="modal-content">
+      <h3>Top Recommended Movies</h3>
+      <div *ngFor="let movie of topRecommendedMovies">
+        <img [src]="movie.poster" alt="{{ movie.title }}" class="movie-poster">
+        <h4>{{ movie.title }}</h4>
+        <p>{{ movie.description }}</p>
+      </div>
+      <button class="top" (click)="closeModal()">Close</button>
+    </div>
+  </div>
