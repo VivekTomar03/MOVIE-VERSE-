@@ -16,6 +16,7 @@ import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { MovieComponent } from './movie/movie.component';
 import { EventComponent } from './event/event.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { EventComponent } from './event/event.component';
     LoginComponent,
     MovieComponent,
     EventComponent,
+    ChatBotComponent,
     
   ],
   imports: [

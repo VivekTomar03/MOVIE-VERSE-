@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignUpComponent {
   newUser = {
@@ -16,73 +16,66 @@ export class SignUpComponent {
     gender: '',
     membership_type: '',
     user_status: false,
-    password: ''
+    password: '',
   };
   showPaymentModal = false;
   paymentDetails = {
     cardNumber: '',
     expiryDate: '',
-    cvv: ''
+    cvv: '',
   };
 
-  constructor(private router: Router,private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   submitUser() {
-    if (this.newUser.membership_type === 'Premium' || this.newUser.membership_type === 'VIP') {
-      // Show the payment modal
+    if (
+      this.newUser.membership_type === 'Premium' ||
+      this.newUser.membership_type === 'VIP'
+    ) {
       this.showPaymentModal = true;
     } else {
-      // Make the HTTP POST request to create the user
       this.createUser();
     }
-  } 
+  }
 
   createUser() {
-    // Make the HTTP POST request to create the user
-    this.http.post<any>('https://movie-verse-l2o2.onrender.com/users', this.newUser).subscribe(
-      (response) => {
-        console.log('User created successfully:', response);
-        Swal.fire(
-          'Good job!',
-          'Signup sucessfull',
-          'success'
-        )
-        // Handle any success messages or redirection here if needed
-        this.router.navigate(['/login']);
-      },
-      (error) => {
-        console.error('Error creating user:', error);
-        // Handle any error messages or display a toast/notification here
-      }
-    );
+    this.http
+      .post<any>('https://movie-verse-l2o2.onrender.com/users', this.newUser)
+      .subscribe(
+        (response) => {
+          console.log('User created successfully:', response);
+          Swal.fire('Good job!', 'Signup sucessfull', 'success');
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          console.error('Error creating user:', error);
+        }
+      );
   }
 
   pay() {
-    // Implement the payment processing logic here
-    // For demonstration purposes, we'll just log the payment details
     console.log('Payment Details:', this.paymentDetails);
     Swal.fire({
-      title: 'Payment Sucessful with card number   ' + this.paymentDetails.cardNumber,
+      title:
+        'Payment Sucessful with card number   ' +
+        this.paymentDetails.cardNumber,
       showClass: {
-        popup: 'animate__animated animate__fadeInDown'
+        popup: 'animate__animated animate__fadeInDown',
       },
       hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    })
-    // Close the payment modal after successful payment
+        popup: 'animate__animated animate__fadeOutUp',
+      },
+    });
     this.closePaymentModal();
 
-    // Proceed with user creation
     this.createUser();
   }
 
   closePaymentModal() {
-    // Clear payment details and close the payment modal
     this.paymentDetails = {
       cardNumber: '',
       expiryDate: '',
-      cvv: ''
+      cvv: '',
     };
     this.showPaymentModal = false;
   }

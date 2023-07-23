@@ -2,57 +2,47 @@
   <header>
     <nav class="top-navbar">
       <div class="logo">
-        <a href="#"><img id="logo" src="https://i.pinimg.com/750x/33/a9/ff/33a9ffa37913809051235facd831819e.jpg" alt="Movie Verse Logo"></a>
+        <a href="#"><img id="logo" src="https://i.pinimg.com/750x/33/a9/ff/33a9ffa37913809051235facd831819e.jpg"
+            alt="Movie Verse Logo"></a>
       </div>
       <div class="search">
         <input type="text" placeholder="Search">
       </div>
       <div class="sign-buttons">
-        <a (click) = "logoutuser()" [routerLink]="['/login']">{{ getlout() }}</a>
+        <a (click)="logoutuser()" [routerLink]="['/login']">{{ getlout() }}</a>
         <a [routerLink]="['/signup']">{{username()}}</a>
 
         <a [routerLink]="['/admin-login']">{{ getAdminLinkText() }}</a>
       </div>
     </nav>
   </header>
-
-    <nav class="bottom-navbar">
-      <ul>
-        <li><a [routerLink]="['/movie']">Movies</a></li>
-        <li><a [routerLink]="['/event']">Events</a></li>
-        <li><a href="#">Shows</a></li>
-        <li><a href="#">Streams</a></li>
-        <li><a href="#">Sports</a></li>
-        <li><a href="#">Activities</a></li>
-        <li><a href="#">Buzz</a></li>
-        <li><a href="#">Chatbot</a></li>
-        <li><a href="#">Other</a></li>
-      </ul>
-    </nav>
+  <nav class="bottom-navbar">
+    <ul>
+      <li><a [routerLink]="['/movie']">Movies</a></li>
+      <li><a [routerLink]="['/event']">Events</a></li>
+      <li><a href="#">Shows</a></li>
+      <li><a href="#">Streams</a></li>
+      <li><a href="#">Sports</a></li>
+      <li><a href="#">Activities</a></li>
+      <li><a href="#">Buzz</a></li>
+      <li><a [routerLink]="['/bot']">Chatbot</a></li>
+      <li><a href="#">Other</a></li>
+    </ul>
+  </nav>
   <main>
     <router-outlet></router-outlet>
   </main>
-
-
-
-
- 
 </div>
 <!-- footer.component.html -->
-
-
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-social">
-      <!-- Social Media Buttons -->
       <a href="#" class="social-button"><i class="fab fa-facebook-f"></i></a>
       <a href="#" class="social-button"><i class="fab fa-twitter"></i></a>
       <a href="#" class="social-button"><i class="fab fa-instagram"></i></a>
       <a href="#" class="social-button"><i class="fab fa-youtube"></i></a>
     </div>
-
     <div class="footer-links">
-      <!-- Static Links -->
       <a href="#">About Us</a>
       <a href="#">Contact Us</a>
       <a href="#">Privacy Policy</a>

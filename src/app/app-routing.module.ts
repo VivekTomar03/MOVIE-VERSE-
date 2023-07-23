@@ -12,6 +12,7 @@ import { SignUpComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { MovieComponent } from './movie/movie.component';
 import { EventComponent } from './event/event.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -26,12 +27,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'movie', component: MovieComponent },
   { path: 'event', component: EventComponent },
-
-
-
+  { path: 'bot', component: ChatBotComponent },
 
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

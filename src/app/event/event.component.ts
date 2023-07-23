@@ -8,15 +8,14 @@ interface Movie {
   language: string;
   poster: string;
   description: string;
-  date:Date;
-  time:Time
+  date: Date;
+  time: Time;
 }
-
 
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css']
+  styleUrls: ['./event.component.css'],
 })
 export class EventComponent implements OnInit {
   movies: Movie[] = [];
@@ -27,27 +26,37 @@ export class EventComponent implements OnInit {
   paymentDetails: any = {
     cardNumber: '',
     expiryDate: '',
-    cvv: ''
+    cvv: '',
   };
   isPaymentDetailsFilled: boolean = false;
-  isViewModalOpen:boolean= true
+  isViewModalOpen: boolean = true;
   seatLayout: any = {
     rows: ['A', 'B', 'C', 'D'],
     columns: ['1', '2', '3', '4', '5', '6', '7', '8'],
     availableSeats: ['A1', 'B5', 'C3'],
     bookedSeats: ['A2', 'B3', 'D4'],
-    selectedSeats: [] // To store the user-selected seats
+    selectedSeats: [], // To store the user-selected seats
   };
-  dataLoaded:boolean=false
-  constructor(private http: HttpClient) { }
+  dataLoaded: boolean = false;
+  currentPage: number = 1;
+  itemsPerPage: number = 6; // Number of items to display per page
+  sortBy: string = '';
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
     // Make the HTTP GET request to fetch movies
     this.dataLoaded = false;
-    this.http.get<Movie[]>('https://movie-verse-l2o2.onrender.com/events').subscribe(
+    this.loadMovies();
+  }
+
+  loadMovies() {
+    // Add query parameters for sorting and pagination
+    const url = `https://movie-verse-l2o2.onrender.com/events?sort_by=title&page=${this.currentPage}&limit=${this.itemsPerPage}`;
+
+    this.http.get<Movie[]>(url).subscribe(
       (data) => {
         this.movies = data;
-        this.dataLoaded = true
+        this.dataLoaded = true;
       },
       (error) => {
         console.error('Error fetching movies:', error);
@@ -62,30 +71,29 @@ export class EventComponent implements OnInit {
 
   // Function to handle the booking process
   bookMovie() {
-    if(localStorage.getItem("usertoken")){
-       // Check if a movie is selected
-    if (!this.selectedMovie) {
-      return;
-    }
+    if (localStorage.getItem('usertoken')) {
+      // Check if a movie is selected
+      if (!this.selectedMovie) {
+        return;
+      }
 
-    // If a movie is selected and it's not a Regular membership, show the payment modal
-    if (this.selectedMovie.membership_type !== 'Regular') {
-      const paymentModal = document.getElementById('payment-modal');
-      if (paymentModal) {
-        paymentModal.classList.add('active');
+      // If a movie is selected and it's not a Regular membership, show the payment modal
+      if (this.selectedMovie.membership_type !== 'Regular') {
+        const paymentModal = document.getElementById('payment-modal');
+        if (paymentModal) {
+          paymentModal.classList.add('active');
+        }
+      } else {
+        // If it's a Regular membership, directly book the movie without payment
+        this.performBooking();
       }
     } else {
-      // If it's a Regular membership, directly book the movie without payment
-      this.performBooking();
-    }
-    }
-    else {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'You Are Not Login!!! Please Login First',
-        footer: '<a href="/login">Please click here to login!!!</a>'
-      })
+        footer: '<a href="/login">Please click here to login!!!</a>',
+      });
     }
   }
 
@@ -140,7 +148,10 @@ export class EventComponent implements OnInit {
 
   viewSeats() {
     // Check if cardNumber and cvv are filled
-    if (this.paymentDetails.cardNumber.trim() !== '' && this.paymentDetails.cvv.trim() !== '') {
+    if (
+      this.paymentDetails.cardNumber.trim() !== '' &&
+      this.paymentDetails.cvv.trim() !== ''
+    ) {
       // Show the seat layout modal
       const seatsModal = document.getElementById('seats-modal');
       if (seatsModal) {
@@ -173,4 +184,29 @@ export class EventComponent implements OnInit {
     this.isViewModalOpen = false;
   }
 
+  // Function to sort movies by title
+  sortMovies() {
+  
+    this.movies.sort((a, b) => b.title.localeCompare(a.title));
+  
+  // console.log(this.movies)
+  }
+
+  // Function to handle pagination
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadMovies();
+    }
+  }
+
+  nextPage() {
+    // Assuming there's no total page count available from the server
+    this.currentPage++;
+    this.loadMovies();
+  }
+  reset(){
+    this.loadMovies();
+
+  }
 }

@@ -1,9 +1,5 @@
 <h2 style="text-align: center;">User Management</h2>
-
-<!-- Button to add a new user -->
 <button class="add-button" (click)="addUser()">Add User</button>
-
-<!-- Table to display user data -->
 <table class="user-table">
   <thead>
     <tr>
@@ -120,7 +116,8 @@
     </div>
     <div class="form-group">
       <label for="editMembershipType">Membership Type:</label>
-      <input type="text" id="editMembershipType" [(ngModel)]="editUserObj.membership_type" name="editMembershipType" required>
+      <input type="text" id="editMembershipType" [(ngModel)]="editUserObj.membership_type" name="editMembershipType"
+        required>
     </div>
     <div class="form-group">
       <label for="editUserStatus">User Status:</label>

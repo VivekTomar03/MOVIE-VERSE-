@@ -1,5 +1,15 @@
 <div class="container">
-  <h3>Movies</h3>
+  <h3>Live Events</h3>
+  <select >
+    <option value="All">All</option>
+    <option value="English">English</option>
+    <option value="Hindi">Hindi</option>
+  </select>
+  <button (click)="sortMovies()">Sort by Title</button>
+  <button (click)="reset()">Reset</button>
+  
+
+
   <div *ngIf="!dataLoaded" class="loader">
     <div class="shapes-6"></div>
   </div>
@@ -7,13 +17,22 @@
     <div *ngFor="let movie of movies" class="movie-item" (click)="onSelectMovie(movie)">
       <img [src]="movie.poster" alt="{{ movie.title }}">
       <h4>{{ movie.title }}</h4>
-      <p>Language :{{ movie.language }}</p>
+      <p>Language : Hindi </p>
       <p>Date :{{ movie.date }}</p>
       <h4 class="subtitle">Shows:`12-15  ,  15-18   , 18-21</h4>
 
       <button (click)="bookMovie()">Book Now</button>
      
     </div>
+  </div>
+
+  <!-- Pagination buttons -->
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }}</span>
+    <!-- You may need to handle the case when there are no more pages -->
+    <!-- For simplicity, I'm assuming there are always more pages -->
+    <button (click)="nextPage()">Next</button>
   </div>
 </div>
 

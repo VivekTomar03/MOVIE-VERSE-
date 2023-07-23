@@ -1,67 +1,69 @@
 .container {
-    margin: 20px;
-  }
-  
-  .add-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-    margin: 5px;
-  }
-  
-  .movie-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .movie-table th,
-  .movie-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .movie-table th:last-child,
-  .movie-table td:last-child {
-    text-align: center;
-  }
-  
-  .movie-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .edit-button,
-  .delete-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 4px;
-    margin-right: 5px;
-  }
-  .action-button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-  }
-  .edit-button {
-    background-color: #28a745;
-  }
-  
-  .delete-button {
-    background-color: #dc3545;
-  }
-/* Styles for the modal */
+  margin: 20px;
+}
+
+.add-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  margin: 5px;
+}
+
+.movie-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.movie-table th,
+.movie-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.movie-table th:last-child,
+.movie-table td:last-child {
+  text-align: center;
+}
+
+.movie-table th {
+  background-color: #f2f2f2;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
+.action-button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #28a745;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -90,20 +92,17 @@
   justify-content: space-between;
 }
 
-/* Style for the form inside the modal */
 .modal-content form {
   display: flex;
   flex-direction: column;
 }
 
-/* Style for the "Cancel" and "Submit" buttons inside the modal */
 .modal-content button {
   margin-top: 10px;
   padding: 10px;
   cursor: pointer;
 }
 
-/* Style for the "Add Movie" button */
 .action-button {
   padding: 10px 20px;
   background-color: #007BFF;
@@ -113,7 +112,6 @@
   cursor: pointer;
 }
 
-/* Additional styles for the form fields (you can adjust as per your requirements) */
 .modal-content input,
 .modal-content select,
 .modal-content textarea {
@@ -124,7 +122,6 @@
 }
 
 
-/* CSS for the movie card inside the modal */
 .movie-card {
   text-align: center;
   padding: 20px;
@@ -133,8 +130,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   margin: 0 auto;
-  max-height: 300px; /* Set the maximum height for the movie card */
-  overflow-y: auto; /* Enable vertical scroll when content overflows */
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .movie-card .poster {
@@ -159,19 +156,14 @@
   font-style: italic;
 }
 
-/* ... other CSS styles ... */
 
 
-/* Center the modal on smaller screens */
 @media screen and (max-width: 600px) {
   .modal-content {
     margin: 30% auto;
   }
 }
 
-  .open {
-    display: block;
-  }
-  
-
-  
+.open {
+  display: block;
+}

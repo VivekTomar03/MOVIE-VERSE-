@@ -35,26 +35,72 @@ export class MovieComponent implements OnInit {
     bookedSeats: ['A2', 'B3', 'D4'],
     selectedSeats: [] // To store the user-selected seats
   };
-
+  selectedLanguage: string = 'All';
+  currentPage: number = 1;
+  moviesPerPage: number = 6;
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    // Make the HTTP GET request to fetch movies
+    this.loadMovies();
+    
+  }
+
+  loadMovies() {
     this.dataLoaded = false;
-    this.http.get<Movie[]>('https://movie-verse-l2o2.onrender.com/movies').subscribe(
+
+    // Build the API URL with pagination and filtering parameters
+    let apiUrl = `https://movie-verse-l2o2.onrender.com/movies?page=${this.currentPage}&limit=${this.moviesPerPage}`;
+
+    if (this.selectedLanguage !== 'All') {
+      apiUrl += `&language=${this.selectedLanguage}`;
+    }
+
+    // Make the HTTP GET request to fetch movies with the selected options
+    this.http.get<Movie[]>(apiUrl).subscribe(
       (data) => {
-       
         this.movies = data;
-        this.dataLoaded= true
+        this.dataLoaded = true;
       },
       (error) => {
         console.error('Error fetching movies:', error);
         // Handle any error messages or display a toast/notification here
+        this.dataLoaded = true;
       }
     );
-   
-    
   }
+
+  // Function to filter movies by language
+  filterMovies() {
+    this.currentPage = 1; // Reset pagination to the first page
+    this.loadMovies();
+  }
+
+  // Function to sort movies by title
+  sortMovies() {
+    this.movies.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  // Function to navigate to the previous page
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.loadMovies();
+    }
+  }
+
+  // Function to navigate to the next page
+  nextPage() {
+    this.currentPage++;
+    this.loadMovies();
+  }
+
+  reset(){
+    this.selectedLanguage= "All"
+    this.loadMovies();
+
+  }
+
+
 
   onSelectMovie(movie: any) {
     this.selectedMovie = movie;

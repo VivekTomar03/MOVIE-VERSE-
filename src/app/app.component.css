@@ -1,12 +1,12 @@
-/* styles.css */
-.containe{
-  /* width: 100%; */
+.containe {
+
   margin: 0 auto;
   padding: 20px;
   width: fit-content;
-  
+
 }
-/* Top Navigation Bar */
+
+
 .top-navbar {
   background-color: #2932d4;
   color: #ffffff;
@@ -17,7 +17,7 @@
   margin-top: -8px;
   margin-left: -18px;
   margin-right: -18px;
-  
+
 }
 
 .top-navbar .logo {
@@ -29,13 +29,17 @@
   height: 40px;
 
 }
-#logo{
+
+#logo {
   margin-left: 20px;
- width: 100%;
+  width: 100%;
 }
+
 .top-navbar .search {
-  flex-grow: 0.5; /* Make the search bar occupy less space */
-  margin: 0 20px; /* Increase the horizontal margin around the search bar */
+  flex-grow: 0.5;
+
+  margin: 0 20px;
+
 }
 
 .top-navbar .search input {
@@ -48,14 +52,14 @@
 .top-navbar .sign-buttons a {
   color: #ffffff;
   text-decoration: none;
-  margin-left: 10px; /* Increase the distance between the sign-in, sign-up, and admin-login links */
+  margin-left: 10px;
+
 }
 
 .top-navbar .sign-buttons a:not(:first-child) {
-  margin-left: 15px; /* Add margin between the links except for the first link */
+  margin-left: 15px;
 }
 
-/* Bottom Navigation Bar */
 .bottom-navbar {
   background-color: #0D1282;
   padding: 10px;
@@ -84,24 +88,23 @@
   color: #D71313;
 }
 
-/* footer.component.css */
 
 .footer {
   background-color: #0D1282;
   color: #fff;
   padding: 20px;
- width: 100%;
- margin: auto;
- margin-bottom: 0%;
- margin-top: 50px;
- bottom: 0%;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 0%;
+  margin-top: 50px;
+  bottom: 0%;
 }
 
 .footer-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
 }
 
 .footer-social {
@@ -132,35 +135,36 @@
 }
 
 
-/* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
   .top-navbar .logo img {
-    height: 30px; /* Decrease the logo height for smaller screens */
+    height: 30px;
   }
 
   .top-navbar .sign-buttons a {
-    margin-left: 5px; /* Decrease the distance between the sign-in, sign-up, and admin-login links */
+    margin-left: 5px;
+
   }
 
   .bottom-navbar ul li {
-    margin: 0 5px; /* Decrease the margin between navigation items in the bottom navigation bar */
+    margin: 0 5px;
+
   }
 
   .footer-container {
-    flex-direction: column; /* Stack footer items vertically on smaller screens */
+    flex-direction: column;
   }
 
   .footer-social {
-    justify-content: center; /* Center social buttons on smaller screens */
+    justify-content: center;
   }
 
   .footer-links a {
-    margin-right: 10px; /* Decrease the margin between footer links on smaller screens */
+    margin-right: 10px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .top-navbar .search input {
-    padding: 4px; /* Decrease the padding of the search input for smaller screens */
+    padding: 4px;
   }
 }

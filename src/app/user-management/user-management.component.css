@@ -1,10 +1,10 @@
-/* User Management Page Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: #EEEDED;
 }
+
 h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -44,7 +44,6 @@ h2 {
   cursor: pointer;
 }
 
-/* User Details Modal Styles */
 
 .modal {
   position: fixed;
@@ -90,7 +89,6 @@ h3 {
   color: white;
 }
 
-/* Add/Edit User Modal Styles */
 
 .form-group {
   margin-bottom: 15px;
@@ -149,7 +147,7 @@ input[type="checkbox"] {
 .cancel-button:hover {
   opacity: 0.8;
 }
-/* Responsive styles */
+
 @media (max-width: 768px) {
   .modal-content {
     max-width: 90%;

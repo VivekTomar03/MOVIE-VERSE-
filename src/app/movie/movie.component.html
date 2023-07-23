@@ -1,5 +1,16 @@
 <div class="container">
   <h3>Movies</h3>
+  <select [(ngModel)]="selectedLanguage" (change)="filterMovies()">
+    <option value="All">All</option>
+    <option value="English">English</option>
+    <option value="Hindi">Hindi</option>
+  </select>
+
+  <!-- Add button for sorting movies -->
+  <button (click)="sortMovies()">Sort by Title</button>
+  <button (click)="reset()">Reset</button>
+
+
   <div *ngIf="!dataLoaded" class="loader">
     <div class="shapes-6"></div>
   </div>
@@ -15,7 +26,15 @@
      
     </div>
   </div>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }}</span>
+    <button  (click)="nextPage()">Next</button>
+  </div>
 </div>
+
+
 
 <!-- Payment Modal -->
 <div *ngIf="selectedMovie" class="modal" id="payment-modal">

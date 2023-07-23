@@ -316,3 +316,59 @@
   background-size:100% 50%;
   background-repeat: no-repeat;
 }
+
+
+
+
+/* Styles for the pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* Disabled style for previous and next buttons */
+.pagination button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Styles for the select tag */
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+  margin: 20px;
+  margin-left: 55%;
+}
+
+/* Styles for the sort button */
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 5px;
+  margin: 20px;
+
+}
+
+/* Hover style for the sort button */
+button:hover {
+  background-color: #0056b3;
+}
