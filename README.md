@@ -8,7 +8,7 @@ MOVIE VERSE
 Project:MOVIE VERSE APPLICATION.
 
 
-Website-LINK: https://movieverse-xi.vercel.app/
+Website-LINK: <a href="https://movieverse-pi.vercel.app/" _blank="">Deploy Link</a>
 
 
 Welcome to our website - your ultimate entertainment destination! We offer hassle-free online booking for movies and live events, accompanied by a helpful chatbot for any assistance you need. Dive into a world of captivating cinema and thrilling performances with ease and convenience. Your entertainment experience starts here!
